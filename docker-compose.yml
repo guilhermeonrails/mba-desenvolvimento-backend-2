@@ -1,0 +1,38 @@
+# Um serviço por projeto. Cada um abre um terminal Linux (bash) já dentro da pasta
+# do projeto, com tudo instalado. Use UM por vez (todos usam a porta 8000):
+#
+#   docker compose run --rm --service-ports projeto-1
+#   docker compose run --rm --service-ports projeto-2
+#   docker compose run --rm --service-ports projeto-3
+
+x-aula: &aula
+  build: .
+  image: aula-2-python:fastapi-django
+  ports:
+    # a API (FastAPI) e o Django abrem em http://localhost:8000
+    - "8000:8000"
+  volumes:
+    # a pasta da aula inteira fica visível dentro do container
+    - .:/app
+  stdin_open: true
+  tty: true
+  command: bash
+
+services:
+  projeto-1:
+    <<: *aula
+    working_dir: /app/src/projeto-1
+    environment:
+      DICA: "📁 Projeto 1 (FastAPI).\nCrie o main.py e rode a API com: uvicorn main:app\nDocumentação: http://localhost:8000/docs"
+
+  projeto-2:
+    <<: *aula
+    working_dir: /app/src/projeto-2/backend
+    environment:
+      DICA: "📁 Projeto 2 (API da loja).\nCrie o main.py e rode a API com: uvicorn main:app\nA loja (front-end) abre pelo Live Server, fora do Docker."
+
+  projeto-3:
+    <<: *aula
+    working_dir: /app/src/projeto-3
+    environment:
+      DICA: "📁 Projeto 3 (Django).\nCrie o projeto com: django-admin startproject config .\nLigue o servidor com: python manage.py runserver 0.0.0.0:8000"

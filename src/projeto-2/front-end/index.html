@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PythonShop: compre online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topo">
+        <div class="topo-principal">
+            <a class="logo" href="index.html">python<span>shop</span><i></i></a>
+
+            <div class="entrega">
+                <small>Enviar para</small>
+                <b>📍 Brasil</b>
+            </div>
+
+            <form class="busca" id="busca">
+                <input id="texto-busca" type="search" placeholder="Pesquisar na PythonShop" autocomplete="off">
+                <button type="submit" aria-label="Pesquisar">🔍</button>
+            </form>
+
+            <div class="conta">
+                <small>Olá, faça seu login</small>
+                <b>Contas e Listas</b>
+            </div>
+
+            <button class="carrinho-btn" id="abrir-carrinho" aria-label="Abrir o carrinho">
+                <span class="icone">🛒<em id="qtd">0</em></span>
+                <b>Carrinho</b>
+            </button>
+        </div>
+
+        <nav class="topo-menu">
+            <a href="#">☰ Todos</a>
+            <a href="#">Mais vendidos</a>
+            <a href="#">Ofertas do Dia</a>
+            <a href="#">Eletrônicos</a>
+            <a href="#">Informática</a>
+            <a href="#">Atendimento ao Cliente</a>
+        </nav>
+    </header>
+
+    <div class="faixa-entrega">Frete GRÁTIS nas compras acima de R$ 99 · Entrega rápida para todo o Brasil</div>
+
+    <main class="resultados">
+        <aside class="filtros">
+            <h3>Departamento</h3>
+            <ul id="deptos"></ul>
+
+            <h3>Faixa de preço</h3>
+            <ul id="precos"></ul>
+
+            <h3>Avaliações dos clientes</h3>
+            <p class="estrelas-filtro">★★★★☆ <span>ou mais</span></p>
+        </aside>
+
+        <section class="lista">
+            <div class="barra">
+                <p id="resumo">Carregando produtos...</p>
+                <label>Ordenar por:
+                    <select id="ordem">
+                        <option value="relevancia">Mais relevantes</option>
+                        <option value="menor">Preço: menor para maior</option>
+                        <option value="maior">Preço: maior para menor</option>
+                        <option value="avaliacao">Média de avaliações</option>
+                    </select>
+                </label>
+            </div>
+
+            <h2 class="titulo-lista">Resultados</h2>
+            <p class="subtitulo-lista">Confira preço e disponibilidade.</p>
+
+            <div id="aviso" class="aviso" hidden></div>
+            <div id="produtos" class="grade"></div>
+        </section>
+    </main>
+
+    <div class="fundo" id="fundo" hidden></div>
+    <aside class="gaveta" id="gaveta" hidden>
+        <div class="gaveta-topo">
+            <h2>Carrinho</h2>
+            <button id="fechar-carrinho" aria-label="Fechar o carrinho">✕</button>
+        </div>
+        <ul id="itens" class="itens"></ul>
+        <p class="subtotal">Subtotal: <strong id="total">R$ 0,00</strong></p>
+        <button class="btn-amarelo" id="finalizar">Fechar pedido</button>
+        <button class="btn-limpar" id="limpar">Esvaziar carrinho</button>
+    </aside>
+
+    <script src="script.js"></script>
+</body>
+</html>
